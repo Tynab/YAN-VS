@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAN VS</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+        }
+
+        body,
+        canvas {
+            background-color: black;
+        }
+
+        canvas {
+            width: 100%;
+            object-fit: contain;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+        img {
+            display: none;
+        }
+    </style>
+    <script type="module" src="./src/index.js"></script>
+</head>
+
+<body>
+    <canvas></canvas>
+    <img src="./img/amakusa_castle.png" alt="background">
+    <img src="./img/charlotte.png" alt="charlotte">
+    <img src="./img/enja.png" alt="enja">
+</body>
+
+</html>
