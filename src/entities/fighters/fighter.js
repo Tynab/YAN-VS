@@ -1,4 +1,4 @@
-const maxFrame = 10
+const maxFrame = 9
 
 export class Fighter {
     constructor(name, x, y, velocity) {
@@ -7,24 +7,32 @@ export class Fighter {
         this.frames = new Map()
         this.position = { x, y }
         this.velocity = velocity
-        this.animationFrame = 1
+        this.animationFrame = 0
         this.animationTimer = 0
+        this.state = 'walkForwards'
+        this.animations = {}
     }
 
     update(time, context) {
-        const [[, , width]] = this.frames.get(`forwards-${this.animationFrame}`)
+        const [[, , width]] = this.frames.get(this.animations[this.state][this.animationFrame])
 
         if (time.previous > this.animationTimer + 60) {
             this.animationTimer = time.previous
             this.animationFrame++
 
-            if (this.animationFrame > maxFrame) this.animationFrame = 1
+            if (this.animationFrame > maxFrame) this.animationFrame = 0
         }
 
         this.position.x += this.velocity * time.secondsPassed
 
-        if (this.position.x > context.canvas.width - width || this.position.x < 0) {
-            this.velocity = -this.velocity
+        if (this.position.x > context.canvas.width - width / 2) {
+            this.velocity = -150
+            this.state = 'walkBackwards'
+        }
+
+        if (this.position.x < width / 2) {
+            this.velocity = 150
+            this.state = 'walkForwards'
         }
     }
 
@@ -40,7 +48,7 @@ export class Fighter {
     }
 
     draw(context) {
-        const [[x, y, width, height], [originX, originY]] = this.frames.get(`forwards-${this.animationFrame}`)
+        const [[x, y, width, height], [originX, originY]] = this.frames.get(this.animations[this.state][this.animationFrame])
 
         context.drawImage(this.image, x, y, width, height, this.position.x - originX, this.position.y - originY, width, height)
         this.drawDebug(context)

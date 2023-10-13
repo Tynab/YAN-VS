@@ -2,6 +2,7 @@ import { Stage } from "./entities/stage.js"
 import { FpsCounter } from "./entities/fpsCounter.js"
 import { Charlotte } from "./entities/fighters/charlotte.js"
 import { Enja } from "./entities/fighters/enja.js"
+import { STAGE_FLOOR } from "./constants/stage.js"
 
 const GameViewport = {
     WIDTH: 624,
@@ -18,8 +19,8 @@ window.addEventListener('load', function () {
     const entities = [
         new Stage(),
         new FpsCounter(),
-        new Charlotte(80, 306, 150),
-        new Enja(80, 446, -150)
+        new Charlotte(80, STAGE_FLOOR, 150),
+        new Enja(80, STAGE_FLOOR, -150)
     ]
 
     let frameTime = {
