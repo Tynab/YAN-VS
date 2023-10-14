@@ -15,6 +15,9 @@
 
         body {
             display: flex;
+            flex-direction: column;
+            --form-height: 6rem;
+            --form-context-size: 2rem;
         }
 
         body,
@@ -32,12 +35,54 @@
         img {
             display: none;
         }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: var(--form-context-size);
+            height: var(--form-height);
+        }
+
+        form * {
+            font-size: var(--form-context-size);
+        }
+
+        input[type='checkbox'] {
+            width: var(--form-context-size);
+            height: var(--form-context-size);
+        }
+
+        main {
+            display: flex;
+            height: calc(100% - var(--form-height));
+        }
+
+        label {
+            color: white;
+        }
     </style>
     <script type="module" src="./src/index.js"></script>
 </head>
 
 <body>
-    <canvas></canvas>
+    <form>
+        <div>
+            <input type="checkbox" id="charlotte" name="fighter" value="Charlotte">
+            <label for="charlotte">Charlotte</label>
+        </div>
+        <div>
+            <input type="checkbox" id="enja" name="fighter" value="Enja">
+            <label for="enja">Enja</label>
+        </div>
+        <select name="state" id="state-dropdown"></select>
+        <button type="submit">Transition!</button>
+    </form>
+    <main>
+        <canvas width="624" height="456"></canvas>
+    </main>
     <img src="./img/amakusa_castle.png" alt="background">
     <img src="./img/charlotte.png" alt="charlotte">
     <img src="./img/enja.png" alt="enja">
