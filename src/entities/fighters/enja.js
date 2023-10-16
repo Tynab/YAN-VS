@@ -17,34 +17,34 @@ export class Enja extends Fighter {
             ['stance-8', [[779, 452, 69, 95], [34, 95]]],
 
             // Walking Forwards
-            ['forwards-1', [[25, 902, 62, 94], [31, 94]]],
-            ['forwards-2', [[102, 903, 71, 92], [22, 93]]],
-            ['forwards-3', [[189, 905, 79, 91], [18, 91]]],
-            ['forwards-4', [[281, 905, 71, 91], [10, 91]]],
-            ['forwards-5', [[366, 902, 66, 94], [-1, 94]]],
-            ['forwards-6', [[448, 901, 59, 95], [-11, 95]]],
-            ['forwards-7', [[527, 901, 57, 95], [-15, 95]]],
-            ['forwards-8', [[601, 901, 60, 95], [-15, 95]]],
+            ['forwards-1', [[25, 902, 62, 94], [31, 95]]],
+            ['forwards-2', [[102, 903, 71, 92], [22, 94]]],
+            ['forwards-3', [[189, 905, 79, 91], [18, 92]]],
+            ['forwards-4', [[281, 905, 71, 91], [8, 92]]],
+            ['forwards-5', [[366, 902, 66, 94], [-3, 95]]],
+            ['forwards-6', [[448, 901, 59, 95], [-13, 95]]],
+            ['forwards-7', [[527, 901, 57, 95], [-17, 96]]],
+            ['forwards-8', [[601, 901, 60, 95], [-17, 96]]],
 
             // Stomping forwards
-            ['stompfor-1', [[25, 902, 62, 94], [31, 94]]],
-            ['stompfor-2', [[102, 903, 71, 92], [35, 93]]],
-            ['stompfor-3', [[189, 905, 79, 91], [39, 91]]],
-            ['stompfor-4', [[281, 905, 71, 91], [35, 91]]],
-            ['stompfor-5', [[366, 902, 66, 94], [33, 94]]],
+            ['stompfor-1', [[25, 902, 62, 94], [31, 95]]],
+            ['stompfor-2', [[102, 903, 71, 92], [35, 94]]],
+            ['stompfor-3', [[189, 905, 79, 91], [39, 92]]],
+            ['stompfor-4', [[281, 905, 71, 91], [35, 92]]],
+            ['stompfor-5', [[366, 902, 66, 94], [33, 95]]],
             ['stompfor-6', [[448, 901, 59, 95], [29, 95]]],
-            ['stompfor-7', [[527, 901, 57, 95], [28, 95]]],
-            ['stompfor-8', [[601, 901, 60, 95], [30, 95]]],
+            ['stompfor-7', [[527, 901, 57, 95], [28, 96]]],
+            ['stompfor-8', [[601, 901, 60, 95], [30, 96]]],
 
             // Walking Backwards
             ['backwards-1', [[25, 1047, 62, 94], [31, 94]]],
             ['backwards-2', [[107, 1048, 78, 93], [49, 93]]],
             ['backwards-3', [[200, 1052, 87, 89], [58, 90]]],
             ['backwards-4', [[299, 1054, 82, 87], [58, 90]]],
-            ['backwards-5', [[398, 1054, 65, 87], [74, 90]]],
-            ['backwards-6', [[478, 1050, 59, 91], [81, 91]]],
-            ['backwards-7', [[550, 1049, 57, 92], [82, 92]]],
-            ['backwards-8', [[620, 1047, 60, 94], [89, 94]]],
+            ['backwards-5', [[398, 1054, 65, 87], [73, 90]]],
+            ['backwards-6', [[478, 1050, 59, 91], [80, 91]]],
+            ['backwards-7', [[550, 1049, 57, 92], [81, 92]]],
+            ['backwards-8', [[620, 1047, 60, 94], [86, 94]]],
 
             // Stomping backwards
             ['stompback-1', [[25, 1047, 62, 94], [31, 94]]],
@@ -57,14 +57,18 @@ export class Enja extends Fighter {
             ['stompback-8', [[620, 1047, 60, 94], [30, 94]]],
 
             // Jump Forwards
-            ['jumpfor-1', [[33, 1217, 66, 71], [33, 71]]],
-            ['jumpfor-2', [[111, 1217, 61, 82], [30, 82]]],
-            ['jumpfor-3', [[185, 1217, 71, 103], [35, 103]]],
-            ['jumpfor-4', [[275, 1217, 76, 91], [38, 91]]],
-            ['jumpfor-5', [[374, 1217, 62, 142], [31, 142]]],
-            ['jumpfor-6', [[26, 1427, 61, 86], [30, 86]]],
-            ['jumpfor-7', [[107, 1440, 70, 74], [32, 72]]],
-            ['jumpfor-8', [[195, 1444, 75, 74], [34, 72]]]
+            ['jumpfor-1', [[33, 1217, 66, 71], [33, 109]]],
+            ['jumpfor-2', [[111, 1217, 61, 82], [31, 114]]],
+            ['jumpfor-3', [[185, 1217, 71, 103], [36, 125]]],
+            ['jumpfor-4', [[275, 1217, 76, 91], [38, 119]]],
+            ['jumpfor-5', [[374, 1217, 62, 142], [31, 144]]],
+            ['jumpfor-6', [[26, 1427, 61, 86], [42, 88]]],
+            ['jumpfor-7', [[107, 1440, 70, 74], [44, 74]]],
+            ['jumpfor-8', [[195, 1444, 75, 74], [45, 74]]],
+            ['jumpfor-9', [[332, 1444, 75, 74], [45, 74]]],
+            ['jumpfor-10', [[420, 1444, 75, 74], [45, 74]]],
+            ['jumpfor-11', [[508, 1444, 75, 74], [45, 74]]],
+            ['jumpfor-12', [[596, 1444, 75, 74], [45, 74]]]
         ])
 
         this.animations = {
@@ -73,10 +77,10 @@ export class Enja extends Fighter {
             [FighterState.STOMPING_FORWARDS]: ['stompfor-1', 'stompfor-2', 'stompfor-3', 'stompfor-4', 'stompfor-5', 'stompfor-6', 'stompfor-7', 'stompfor-8'],
             [FighterState.WALKING_BACKWARDS]: ['backwards-1', 'backwards-2', 'backwards-3', 'backwards-4', 'backwards-5', 'backwards-6', 'backwards-7', 'backwards-8'],
             [FighterState.STOMPING_BACKWARDS]: ['stompback-1', 'stompback-2', 'stompback-3', 'stompback-4', 'stompback-5', 'stompback-6', 'stompback-7', 'stompback-8'],
-            [FighterState.JUMP_FORWARDS]: ['jumpfor-1', 'jumpfor-2', 'jumpfor-3', 'jumpfor-4', 'jumpfor-5', 'jumpfor-6', 'jumpfor-7', 'jumpfor-8']
+            [FighterState.JUMP_FORWARDS]: ['jumpfor-1', 'jumpfor-2', 'jumpfor-3', 'jumpfor-4', 'jumpfor-5', 'jumpfor-6', 'jumpfor-7', 'jumpfor-8', 'jumpfor-9', 'jumpfor-10', 'jumpfor-11', 'jumpfor-11']
         }
 
-        this.forwardsStep = 47
-        this.backwardsStep = -62
+        this.forwardsStep = 49
+        this.backwardsStep = -59
     }
 }
