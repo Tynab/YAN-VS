@@ -9,5 +9,6 @@ export const FighterState = {
     STOMPING_FORWARDS: 'stompingForwards',
     WALKING_BACKWARDS: 'walkingBackwards',
     STOMPING_BACKWARDS: 'stompingBackwards',
-    JUMP_FORWARDS: 'jumpForwards'
+    JUMP_FORWARDS: 'jumpForwards',
+    LANDING_JUMP: 'landingJump'
 }

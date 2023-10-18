@@ -57,29 +57,96 @@ export class Enja extends Fighter {
             ['stompback-8', [[620, 1047, 60, 94], [30, 94]]],
 
             // Jump Forwards
-            ['jumpfor-1', [[33, 1217, 66, 71], [33, 109]]],
-            ['jumpfor-2', [[111, 1217, 61, 82], [31, 114]]],
-            ['jumpfor-3', [[185, 1217, 71, 103], [36, 125]]],
-            ['jumpfor-4', [[275, 1217, 76, 91], [38, 119]]],
-            ['jumpfor-5', [[374, 1217, 62, 142], [31, 144]]],
-            ['jumpfor-6', [[26, 1427, 61, 86], [42, 88]]],
-            ['jumpfor-7', [[107, 1440, 70, 74], [44, 74]]],
-            ['jumpfor-8', [[195, 1444, 75, 74], [45, 74]]],
-            ['jumpfor-9', [[332, 1444, 75, 74], [45, 74]]],
-            ['jumpfor-10', [[420, 1444, 75, 74], [45, 74]]],
-            ['jumpfor-11', [[508, 1444, 75, 74], [45, 74]]],
-            ['jumpfor-12', [[596, 1444, 75, 74], [45, 74]]]
+            ['jumpfor-1', [[33, 1217, 66, 71], [14, 109]]],
+            ['jumpfor-2', [[111, 1217, 61, 82], [12, 114]]],
+            ['jumpfor-3', [[185, 1217, 71, 103], [17, 125]]],
+            ['jumpfor-4', [[275, 1217, 76, 91], [19, 119]]],
+            ['jumpfor-5', [[374, 1217, 62, 142], [12, 144]]],
+
+            // Landing from jump
+            ['landing-1', [[26, 1427, 61, 86], [23, 88]]],
+            ['landing-2', [[107, 1440, 70, 74], [25, 74]]],
+            ['landing-3', [[195, 1444, 75, 74], [26, 74]]],
+            ['landing-4', [[332, 1444, 75, 74], [26, 74]]],
+            ['landing-5', [[420, 1444, 75, 74], [26, 74]]],
+            ['landing-6', [[508, 1444, 75, 74], [26, 74]]],
+            ['landing-7', [[596, 1444, 75, 74], [26, 74]]]
         ])
 
         this.animations = {
-            [FighterState.FIGHTING_STANCE]: ['stance-1', 'stance-2', 'stance-3', 'stance-4', 'stance-5', 'stance-6', 'stance-7', 'stance-8'],
-            [FighterState.WALKING_FORWARDS]: ['forwards-1', 'forwards-2', 'forwards-3', 'forwards-4', 'forwards-5', 'forwards-6', 'forwards-7', 'forwards-8'],
-            [FighterState.STOMPING_FORWARDS]: ['stompfor-1', 'stompfor-2', 'stompfor-3', 'stompfor-4', 'stompfor-5', 'stompfor-6', 'stompfor-7', 'stompfor-8'],
-            [FighterState.WALKING_BACKWARDS]: ['backwards-1', 'backwards-2', 'backwards-3', 'backwards-4', 'backwards-5', 'backwards-6', 'backwards-7', 'backwards-8'],
-            [FighterState.STOMPING_BACKWARDS]: ['stompback-1', 'stompback-2', 'stompback-3', 'stompback-4', 'stompback-5', 'stompback-6', 'stompback-7', 'stompback-8'],
-            [FighterState.JUMP_FORWARDS]: ['jumpfor-1', 'jumpfor-2', 'jumpfor-3', 'jumpfor-4', 'jumpfor-5', 'jumpfor-6', 'jumpfor-7', 'jumpfor-8', 'jumpfor-9', 'jumpfor-10', 'jumpfor-11', 'jumpfor-11']
+            [FighterState.FIGHTING_STANCE]: [
+                ['stance-1', 68],
+                ['stance-2', 68],
+                ['stance-3', 68],
+                ['stance-4', 68],
+                ['stance-5', 68],
+                ['stance-6', 68],
+                ['stance-7', 68],
+                ['stance-8', 68]
+            ],
+            [FighterState.WALKING_FORWARDS]: [
+                ['forwards-1', 65],
+                ['forwards-2', 65],
+                ['forwards-3', 65],
+                ['forwards-4', 65],
+                ['forwards-5', 65],
+                ['forwards-6', 65],
+                ['forwards-7', 65],
+                ['forwards-8', 65]
+            ],
+            [FighterState.STOMPING_FORWARDS]: [
+                ['stompfor-1', 65],
+                ['stompfor-2', 65],
+                ['stompfor-3', 65],
+                ['stompfor-4', 65],
+                ['stompfor-5', 65],
+                ['stompfor-6', 65],
+                ['stompfor-7', 65],
+                ['stompfor-8', 65]
+            ],
+            [FighterState.WALKING_BACKWARDS]: [
+                ['backwards-1', 65],
+                ['backwards-2', 65],
+                ['backwards-3', 65],
+                ['backwards-4', 65],
+                ['backwards-5', 65],
+                ['backwards-6', 65],
+                ['backwards-7', 65],
+                ['backwards-8', 65]
+            ],
+            [FighterState.STOMPING_BACKWARDS]: [
+                ['stompback-1', 65],
+                ['stompback-2', 65],
+                ['stompback-3', 65],
+                ['stompback-4', 65],
+                ['stompback-5', 65],
+                ['stompback-6', 65],
+                ['stompback-7', 65],
+                ['stompback-8', 65]
+            ],
+            [FighterState.JUMP_FORWARDS]: [
+                ['jumpfor-1', 180],
+                ['jumpfor-2', 120],
+                ['jumpfor-3', 120],
+                ['jumpfor-4', 120],
+                ['jumpfor-5', -1],
+            ],
+            [FighterState.LANDING_JUMP]: [
+                ['landing-1', 60],
+                ['landing-2', 60],
+                ['landing-3', 30],
+                ['landing-4', 30],
+                ['landing-5', 30],
+                ['landing-6', 30],
+                ['landing-7', 30]
+            ]
         }
 
+        this.initialVelocity = {
+            jump: -420
+        }
+
+        this.gravity = 1000
         this.forwardsStep = 49
         this.backwardsStep = -59
     }

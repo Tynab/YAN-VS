@@ -1,16 +1,19 @@
 import { FighterDirection, FighterState } from "../../constants/fighter.js"
+import { STAGE_FLOOR } from "../../constants/stage.js"
 
 export class Fighter {
     constructor(name, x, y, direction) {
         this.name = name
-        this.image = new Image()
-        this.frames = new Map()
         this.position = { x, y }
+        this.velocity = { x: 0, y: 0 }
+        this.initialVelocity = {}
         this.direction = direction
-        this.velocity = 0
+        this.gravity = 0
+        this.frames = new Map()
         this.animationFrame = 0
         this.animationTimer = 0
         this.animations = {}
+        this.image = new Image()
         this.width = 0
         this.forwardsStep
         this.backwardsStep
@@ -39,6 +42,10 @@ export class Fighter {
             [FighterState.JUMP_FORWARDS]: {
                 init: this.handleJumpForwardsInit.bind(this),
                 update: this.handleJumpForwardsState.bind(this),
+            },
+            [FighterState.LANDING_JUMP]: {
+                init: this.handleLandingJumpInit.bind(this),
+                update: this.handleLandingJumpState.bind(this),
             }
         }
 
@@ -52,45 +59,58 @@ export class Fighter {
     }
 
     handleFightingStanceInit() {
-        this.velocity = 0
+        this.velocity.x = 0
     }
 
     handleFightingStanceState() {
     }
 
     handleWalkingForwardsInit() {
-        this.velocity = 0
+        this.velocity.x = 0
     }
 
     handleWalkingForwardsState() {
     }
 
     handleStompingForwardsInit() {
-        this.velocity = 300 * this.direction
+        this.velocity.x = 300 * this.direction
     }
 
     handleStompingForwardsState() {
     }
 
     handleStompingBackwardsInit() {
-        this.velocity = -300 * this.direction
+        this.velocity.x = -300 * this.direction
     }
 
     handleStompingBackwardsState() {
     }
 
     handleWalkingBackwardsInit() {
-        this.velocity = 0
+        this.velocity.x = 0
     }
 
     handleWalkingBackwardsState() {
     }
 
     handleJumpForwardsInit() {
-        this.velocity = 0
+        this.velocity.y = this.initialVelocity.jump
     }
 
-    handleJumpForwardsState() {
+    handleJumpForwardsState(time) {
+        this.velocity.y += this.gravity * time.secondsPassed
+
+        if (this.position.y > STAGE_FLOOR) {
+            this.position.y = STAGE_FLOOR
+        }
+    }
+
+    handleLandingJumpInit() {
+        this.velocity.x = 0
+        this.velocity.y = 0
+    }
+
+    handleLandingJumpState(time) {
     }
 
     updateStageContraints(context) {
@@ -122,6 +142,14 @@ export class Fighter {
             }
         }
 
+        if (this.currentState == FighterState.LANDING_JUMP && this.animationFrame >= this.animations[this.currentState].length - 1) {
+            this.changeState(FighterState.FIGHTING_STANCE)
+        }
+
+        if (this.currentState == FighterState.JUMP_FORWARDS && this.position.y >= STAGE_FLOOR && this.animationFrame >= this.animations[this.currentState].length - 1) {
+            this.changeState(FighterState.LANDING_JUMP)
+        }
+
         if (this.position.x > context.canvas.width - WIDTH) {
             this.position.x = context.canvas.width - WIDTH
         }
@@ -131,12 +159,18 @@ export class Fighter {
         }
     }
 
-    update(time, context) {
-        if (time.previous > this.animationTimer + 60) {
-            this.animationTimer = time.previous
-            this.animationFrame++
+    updateAnimation(time) {
+        const animation = this.animations[this.currentState]
+        const [, frameDelay] = animation[this.animationFrame]
 
-            if (this.animationFrame > this.animations[this.currentState].length - 1) {
+        if (time.previous > this.animationTimer + frameDelay) {
+            this.animationTimer = time.previous
+
+            if (frameDelay > 0) {
+                this.animationFrame++
+            }
+
+            if (this.animationFrame >= animation.length) {
                 this.animationFrame = 0
 
                 if (this.currentState == FighterState.WALKING_FORWARDS) {
@@ -149,11 +183,15 @@ export class Fighter {
             }
 
             if (this.currentState == FighterState.STOMPING_FORWARDS || this.currentState == FighterState.STOMPING_BACKWARDS) {
-                this.position.x += this.velocity * time.secondsPassed
+                this.position.x += this.velocity.x * time.secondsPassed
             }
         }
+    }
 
+    update(time, context) {
+        this.position.y += this.velocity.y * time.secondsPassed
         this.states[this.currentState].update(time, context)
+        this.updateAnimation(time)
         this.updateStageContraints(context)
     }
 
@@ -169,7 +207,8 @@ export class Fighter {
     }
 
     draw(context) {
-        const [[x, y, width, height], [originX, originY]] = this.frames.get(this.animations[this.currentState][this.animationFrame])
+        const [frameKey] = this.animations[this.currentState][this.animationFrame]
+        const [[x, y, width, height], [originX, originY]] = this.frames.get(frameKey)
 
         context.scale(this.direction, 1)
         context.drawImage(this.image, x, y, width, height, Math.floor(this.position.x * this.direction) - originX, Math.floor(this.position.y) - originY, width, height)

@@ -83,14 +83,88 @@ export class Charlotte extends Fighter {
         ])
 
         this.animations = {
-            [FighterState.FIGHTING_STANCE]: ['stance-1', 'stance-2', 'stance-3', 'stance-4', 'stance-5', 'stance-6', 'stance-7', 'stance-8', 'stance-9', 'stance-10', 'stance-11', 'stance-12'],
-            [FighterState.WALKING_FORWARDS]: ['forwards-1', 'forwards-2', 'forwards-3', 'forwards-4', 'forwards-5', 'forwards-6', 'forwards-7', 'forwards-8', 'forwards-9', 'forwards-10'],
-            [FighterState.STOMPING_FORWARDS]: ['stompfor-1', 'stompfor-2', 'stompfor-3', 'stompfor-4', 'stompfor-5', 'stompfor-6', 'stompfor-7', 'stompfor-8', 'stompfor-9', 'stompfor-10'],
-            [FighterState.WALKING_BACKWARDS]: ['backwards-1', 'backwards-2', 'backwards-3', 'backwards-4', 'backwards-5', 'backwards-6', 'backwards-7', 'backwards-8', 'backwards-9', 'backwards-10'],
-            [FighterState.STOMPING_BACKWARDS]: ['stompback-1', 'stompback-2', 'stompback-3', 'stompback-4', 'stompback-5', 'stompback-6', 'stompback-7', 'stompback-8', 'stompback-9', 'stompback-10'],
-            [FighterState.JUMP_FORWARDS]: ['jumpfor-1', 'jumpfor-2', 'jumpfor-3', 'jumpfor-4', 'jumpfor-5', 'jumpfor-6', 'jumpfor-7', 'jumpfor-8', 'jumpfor-9', 'jumpfor-10', 'jumpfor-11']
+            [FighterState.FIGHTING_STANCE]: [
+                ['stance-1', 58],
+                ['stance-2', 58],
+                ['stance-3', 58],
+                ['stance-4', 58],
+                ['stance-5', 58],
+                ['stance-6', 58],
+                ['stance-7', 58],
+                ['stance-8', 58],
+                ['stance-9', 58],
+                ['stance-10', 58],
+                ['stance-11', 58],
+                ['stance-12', 58],
+            ],
+            [FighterState.WALKING_FORWARDS]: [
+                ['forwards-1', 65],
+                ['forwards-2', 65],
+                ['forwards-3', 65],
+                ['forwards-4', 65],
+                ['forwards-5', 65],
+                ['forwards-6', 65],
+                ['forwards-7', 65],
+                ['forwards-8', 65],
+                ['forwards-9', 65],
+                ['forwards-10', 65]
+            ],
+            [FighterState.STOMPING_FORWARDS]: [
+                ['stompfor-1', 65],
+                ['stompfor-2', 65],
+                ['stompfor-3', 65],
+                ['stompfor-4', 65],
+                ['stompfor-5', 65],
+                ['stompfor-6', 65],
+                ['stompfor-7', 65],
+                ['stompfor-8', 65],
+                ['stompfor-9', 65],
+                ['stompfor-10', 65]
+            ],
+            [FighterState.WALKING_BACKWARDS]: [
+                ['backwards-1', 65],
+                ['backwards-2', 65],
+                ['backwards-3', 65],
+                ['backwards-4', 65],
+                ['backwards-5', 65],
+                ['backwards-6', 65],
+                ['backwards-7', 65],
+                ['backwards-8', 65],
+                ['backwards-9', 65],
+                ['backwards-10', 65]
+            ],
+            [FighterState.STOMPING_BACKWARDS]: [
+                ['stompback-1', 65],
+                ['stompback-2', 65],
+                ['stompback-3', 65],
+                ['stompback-4', 65],
+                ['stompback-5', 65],
+                ['stompback-6', 65],
+                ['stompback-7', 65],
+                ['stompback-8', 65],
+                ['stompback-9', 65],
+                ['stompback-10', 65]
+            ],
+            [FighterState.JUMP_FORWARDS]: [
+                ['jumpfor-1', 180],
+                ['jumpfor-2', 100],
+                ['jumpfor-3', 100],
+                ['jumpfor-4', 100],
+                ['jumpfor-5', 100],
+                ['jumpfor-6', 100],
+                ['jumpfor-7', 100],
+                ['jumpfor-8', 100],
+                ['jumpfor-9', 100],
+                ['jumpfor-10', 100],
+                ['jumpfor-11', -1]
+            ]
         }
 
+        this.initialVelocity = {
+            jump: -420
+        }
+
+        this.gravity = 1000
         this.forwardsStep = 64
         this.backwardsStep = -66
     }
