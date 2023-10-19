@@ -110,7 +110,7 @@ export class Fighter {
         this.velocity.y = 0
     }
 
-    handleLandingJumpState(time) {
+    handleLandingJumpState() {
     }
 
     updateStageContraints(context) {
